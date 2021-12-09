@@ -1,6 +1,7 @@
 package katas;
 
 import model.Movie;
+import model.MovieList;
 import util.DataUtil;
 
 import java.util.List;
@@ -12,8 +13,20 @@ import java.util.List;
 */
 public class Kata6 {
     public static String execute() {
-        List<Movie> movies = DataUtil.getMovies();
-
-        return "someUrl";
+        List<MovieList> movieLists = DataUtil.getMovieLists();
+        return movieLists.stream().map(movi->movi.getVideos().stream().map(
+                x->x.getBoxarts().stream()
+                        .reduce((acum,num)->acum.getWidth()>num.getWidth()?acum:num).get())
+                .reduce((acum,num)->acum.getWidth()>num.getWidth()?acum:num).get())
+                .reduce((acum,num)->acum.getWidth()>num.getWidth()?acum:num).get().getUrl();
     }
+
+//    public static String execute() {
+//        List<MovieList> movieLists = DataUtil.getMovieLists();
+//        return movieLists.stream().map(movi->movi.getVideos().stream().map(
+//                                x->x.getBoxarts().stream()
+//                                        .reduce((acum,num)->acum.getWidth()>num.getWidth()?acum:num).get())
+//                        .reduce((acum,num)->acum.getWidth()>num.getWidth()?acum:num).get())
+//                .reduce((acum,num)->acum.getWidth()>num.getWidth()?acum:num).get().getUrl();
+//    }
 }
