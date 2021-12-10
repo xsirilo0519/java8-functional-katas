@@ -57,17 +57,17 @@ import java.util.stream.Collectors;
     DataSource: DataUtil.getLists(), DataUtil.getVideos(), DataUtil.getBoxArts(), DataUtil.getBookmarkList()
     Output: the given datastructure
 */
-public class Kata11 {
-    public static List<Map> execute() {
-        List<Map> lists = DataUtil.getLists();
-        List<Map> videos = DataUtil.getVideos();
-        List<Map> boxArts = DataUtil.getBoxArts();
-        List<Map> bookmarkList = DataUtil.getBookmarkList();
-
-        return lists.stream().flatMap(map -> videos.stream()
-                .filter(video -> video.get("listId").equals(map.get("id")))
-                .map(video -> boxArts.stream().filter().findFirst().map(box->video.put("boxart", box.get())))
-        ).collect(Collectors.toList());
-
-    }
-}
+//public class Kata11 {
+//    public static List<Map> execute() {
+//        List<Map> lists = DataUtil.getLists();
+//        List<Map> videos = DataUtil.getVideos();
+//        List<Map> boxArts = DataUtil.getBoxArts();
+//        List<Map> bookmarkList = DataUtil.getBookmarkList();
+//
+//        return lists.stream().flatMap(map -> videos.stream()
+//                .filter(video -> video.get("listId").equals(map.get("id")))
+//                .map(video -> boxArts.stream().filter().findFirst().map(box->video.put("boxart", box.get())))
+//        ).collect(Collectors.toList());
+//
+//    }
+//}
